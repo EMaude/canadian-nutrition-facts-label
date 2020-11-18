@@ -1,0 +1,1 @@
+canadian-nutrition-facts-label

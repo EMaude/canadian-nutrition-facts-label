@@ -316,7 +316,7 @@ function nutr_style()
 	.wp-nutrition-label { border: 1px solid #666; font-family: helvetica, arial, sans-serif; font-size: .9em; max-width: 22em; padding: 1em 1.25em 1em 1.25em; line-height: 1.4em; margin: 1em; background:#fff; }
 	.wp-nutrition-label hr { border:none; border-bottom: solid 8px #666; margin: 3px 0px; }
 	.wp-nutrition-label .heading { font-size: 2.6em; font-weight: 900; margin: 0; line-height: 1em; text-justify:auto;}
-	.wp-nutrition-label .subhead { font-size: 1.6em; font-weight: 800; text-decoration-line: underline; text-decoration-thickness: 0.25em;}
+	.wp-nutrition-label .subhead { font-size: 1.5em; font-weight: 600; text-decoration-line: underline; text-decoration-thickness: 0.2em;}
 	.wp-nutrition-label .indent { margin-left: 1em; }
 	.wp-nutrition-label .small { font-size: .8em; line-height: 1.2em; }
 	.wp-nutrition-label .item_row { border-top: solid 1px #ccc; padding: 3px 0; }

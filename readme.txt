@@ -1,5 +1,5 @@
 ﻿=== Canadian Nutrition Facts Label ===
-Contributors: dandelionweb
+Contributors: elliotmaude
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JEMTB4U8SYFL6
 Tags: food, nutrition, nutrition facts, nutrition label, nutrition labelling, Canadian, bilingual, nutrition facts table
 Requires at least: 3.0
@@ -46,8 +46,7 @@ I appreciate all donations, no matter the size. Further development of this plug
 = What units does the label use? =
 
 * Grams (g): totalfat, satfat, transfat, carbohydrates, fiber, sugars, protein
-* Milligrams (mg): cholesterol and sodium
-* Grams (g): Potassium Calcium and Iron
+* Milligrams (mg): cholesterol and sodium Potassium Calcium and Iron
 
 = How do I add additional vitamins? =
 See screenshot #7 - you click Add New Vitamin then edit the field label to give the vitamin a name
@@ -70,7 +69,19 @@ Leave a vitamin blank and it will be added to the line.  If you put a 0 in the f
 6. Generated label with Vit C left blank showing as "Not a significant source of vitamin C" and with Thiamine added
 
 7. Example how to add additional vitamins 
+
+
 == Upgrade Notice ==
+
+= 3 =
+* This update will likely break all custom vitamins
+* Formatting updated to new standard
+* Removed percentage from carbohydrates
+* Added percentage to sugars
+* added % daily value footnote
+* changed vitamins to new standard
+* changed custom vitamins to grams and percentage
+
 = 2 =
 * Add ability for user generated additional vitamins
 * If a field is left blank add it to text summary line "Not a significant source of"
@@ -89,6 +100,14 @@ Leave a vitamin blank and it will be added to the line.  If you put a 0 in the f
 
 
 == Changelog ==
+= 3 =
+* Formatting updated to new standard
+* Removed percentage from carbohydrates
+* Added percentage to sugars
+* added % daily value footnote
+* changed vitamins to new standard
+* changed custom vitamins to grams and percentage
+
 = 2 =
 * Add ability for user generated additional vitamins
 * If a field is left blank add it to text summary line "Not a significant source of"

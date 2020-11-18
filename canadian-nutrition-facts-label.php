@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name:	Canadian Nutrition Facts Label
-Plugin URI: 	http://dandelionwebdesign.com/downloads/canadian-nutrition-facts-label-plugin-wordpress/
+Plugin URI: 	https://github.com/EMaude/canadian-nutrition-facts-label
 Description:	Create CANADIAN BILINGUAL Nutrition Facts Labels with user generated vitamins Use a shortcode [nutrition-label id=XXX] to add the label to any page or post.
 Version: 		3.0
-Author: 		Dandelion Web Design Inc.
-Author URI:		http://dandelionwebdesign.com/
+Author: 		Elliot Maude
+Author URI:		http://elliotmaude.com/
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

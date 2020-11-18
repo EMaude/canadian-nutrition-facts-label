@@ -180,10 +180,15 @@ function nutr_create_metabox_1()
 				if( !empty($vitamins) ):
 					$dataId = 1;
 
-					if( isset($meta_values['_extra_vitamins_percent']) ):
+					if( isset($meta_values['_extra_vitamins_percent']) ){
 						$percents = unserialize( current($meta_values['_extra_vitamins_percent']));
-						if( !empty($percents) ):
-							foreach($vitamins as $name => $vitamin):
+						if( empty($percents) ){
+							$percents = 0;
+						}
+					}else{
+						$meta_values['_extra_vitamins_percent']  = 0;
+					}
+					foreach($vitamins as $name => $vitamin):
 
 		?>
 
@@ -200,10 +205,9 @@ function nutr_create_metabox_1()
 
 		<?php
 						endforeach;
-					endif;
+					
 				endif;	
 			endif;
-		endif;	
 
 			//Add a nonce field
 			wp_nonce_field(plugin_basename(__FILE__), 'nutrition-facts-nonce');		
@@ -509,7 +513,11 @@ function nutr_label_generate( $id, $width = 22 )
 
 		if (isset($label['_extra_vitamins_percent']) && !empty($label['_extra_vitamins_percent'])) {
 			$extraVitaminsPercent = unserialize(current($label['_extra_vitamins_percent']));
-
+		}
+		else
+		{
+			$extraVitaminsPercent = 0;
+		}
 			$sufficient = array();
 			foreach ($extraVitamins as $key => $vitamin) {
 				if ($vitamin || $vitamin === '0') {
@@ -526,8 +534,7 @@ function nutr_label_generate( $id, $width = 22 )
 					$rtn .= "		<span class='f-right'>" . $extraVitaminsPercent[$extraLabel] .  "%</span>\n";
 					$rtn .= "	</div>\n";
 				}
-			}
-		}  
+			}  
 	}   
 
 

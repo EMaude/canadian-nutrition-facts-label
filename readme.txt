@@ -74,7 +74,7 @@ Leave a vitamin blank and it will be added to the line.  If you put a 0 in the f
 == Upgrade Notice ==
 
 = 3 =
-* This update will likely break all custom vitamins
+* This update will likely mess up formatting on custom vitamins
 * Formatting updated to new standard
 * Removed percentage from carbohydrates
 * Added percentage to sugars

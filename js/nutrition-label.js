@@ -27,6 +27,7 @@ jQuery(document).ready(function($) {
 					'</div>' +
 					'<input type="hidden" value="Add Label' + id + ' Here" class="extraVitaminLabel" name="extra_vitamin_label[]">' +		
 					'<input type="text" value="" name="extra_vitamin[]">' +		
+					'<input type="text" value="" name="extra_vitamin_percent[]">' +
 					'<a class="remove" href="#" title="Remove this label"></a>' + 
 					'<div class="clear"></div>' +
 					'</div>';

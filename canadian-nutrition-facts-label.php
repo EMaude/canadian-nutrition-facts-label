@@ -46,7 +46,7 @@ $rda = array(
 
 		'potassium'			=> 4700,
 		'calcium' 			=> 1300,
-		'iron' 				=> 18
+		'iron' 				=> 18,
 		);
 
 
@@ -179,7 +179,12 @@ function nutr_create_metabox_1()
 				$vitamins = unserialize( current($meta_values['_extra_vitamins']) );
 				if( !empty($vitamins) ):
 					$dataId = 1;
-					foreach($vitamins as $name => $vitamin):
+
+					if( isset($meta_values['_extra_vitamins_percent']) ):
+						$percents = unserialize( current($meta_values['_extra_vitamins_percent']));
+						if( !empty($percents) ):
+							foreach($vitamins as $name => $vitamin):
+
 		?>
 
 			<div class='nutritionField dynamic' id='<?php echo $name ?>' data-id='<?php echo $dataId++ ?>'>
@@ -187,15 +192,18 @@ function nutr_create_metabox_1()
 					<label><?php echo $name ?></label>
 				</div>
 				<input type="hidden" name="extra_vitamin_label[]" class="extraVitaminLabel" value="<?php echo $name ?>">
-				<input type="text" name="extra_vitamin[]" value="<?php echo $vitamin ?>" />
+				<input type="text" name="extra_vitamin[]" value="<?php echo $vitamin[0] ?>" />
+				<input type="text" name="extra_vitamin_percent[]" value="<?php echo $percents[$name] ?>" />
 				<a title="Remove this label" href="#" class="remove"></a>
 				<div class="clear"></div>
 			</div>
 
 		<?php
-					endforeach;
-				endif;
-			endif;	
+						endforeach;
+					endif;
+				endif;	
+			endif;
+		endif;	
 
 			//Add a nonce field
 			wp_nonce_field(plugin_basename(__FILE__), 'nutrition-facts-nonce');		
@@ -243,6 +251,13 @@ function nutr_save_meta( $post_id, $post )
 			update_post_meta( $post_id, '_extra_vitamins', $vitamins );
 		} else {
 			delete_post_meta( $post_id, '_extra_vitamins');
+		}
+
+		if( isset( $_POST['extra_vitamin_percent']) && !empty($_POST['extra_vitamin_percent']) ) {
+			$percents = array_combine($_POST['extra_vitamin_label'], $_POST['extra_vitamin_percent']);
+			update_post_meta( $post_id, '_extra_vitamins_percent', $percents );
+		} else {
+			delete_post_meta( $post_id, '_extra_vitamins_percent');
 		}
 
 		if ( isset( $_POST[ 'pageid' ] ) ) { 
@@ -486,31 +501,34 @@ function nutr_label_generate( $id, $width = 22 )
 	}
 
 
-   /*
+	/*
    	* Extra vitamins
-    */   
-   if( isset($label['_extra_vitamins']) && !empty($label['_extra_vitamins']) ) {
-   		$extraVitamins = unserialize( current($label['_extra_vitamins']) );
+    */
+	if (isset($label['_extra_vitamins']) && !empty($label['_extra_vitamins'])) {
+		$extraVitamins = unserialize(current($label['_extra_vitamins']));
 
-   		$sufficient = array();
-   		foreach( $extraVitamins as $key => $vitamin ) {
-			if( $vitamin || $vitamin === '0' ) {
-				$sufficient[$key] = $vitamin;
-			} else {
-				$insufficient[] = strtolower($key);
+		if (isset($label['_extra_vitamins_percent']) && !empty($label['_extra_vitamins_percent'])) {
+			$extraVitaminsPercent = unserialize(current($label['_extra_vitamins_percent']));
+
+			$sufficient = array();
+			foreach ($extraVitamins as $key => $vitamin) {
+				if ($vitamin || $vitamin === '0') {
+					$sufficient[$key] = $vitamin;
+				} else {
+					$insufficient[] = strtolower($key);
+				}
 			}
-   		}
 
-   		if( !empty($sufficient) ) {
-   			foreach( $sufficient as $extraLabel => $extraVit ) { 
-				$rtn .= "	<div class='item_row cf'>\n";
-				$rtn .= "		<span class='f-left'>" . $extraLabel .  "</span>\n";
-				$rtn .= "		<span class='f-right'>" . $extraVit .  "%</span>\n";
-				$rtn .= "	</div>\n";
+			if (!empty($sufficient)) {
+				foreach ($sufficient as $extraLabel => $extraVit) {
+					$rtn .= "	<div class='item_row cf'>\n";
+					$rtn .= "		<span class='f-left'>" . $extraLabel .  " " . $extraVit .  "g</span>\n";
+					$rtn .= "		<span class='f-right'>" . $extraVitaminsPercent[$extraLabel] .  "%</span>\n";
+					$rtn .= "	</div>\n";
+				}
 			}
-   		}   			
-
-   }     
+		}  
+	}   
 
 
    if( !empty($insufficient) ) {

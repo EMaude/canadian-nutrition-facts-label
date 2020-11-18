@@ -20,7 +20,7 @@ jQuery(document).ready(function ($) {
       id = $('.dynamic:last').data('id') + 1;
     }
 
-    var html = '<div class="nutritionField dynamic" data-id=' + id + '>' + '<div class="label editable" title="Click to edit">' + '<label>Add Label' + id + ' Here</label>' + '</div>' + '<input type="hidden" value="Add Label' + id + ' Here" class="extraVitaminLabel" name="extra_vitamin_label[]">' + '<input type="text" value="" name="extra_vitamin[]">' + '<input type="text" value="" name="extra_vitamin_percent[]">' + '<a class="remove" href="#" title="Remove this label"></a>' + '<div class="clear"></div>' + '</div>';
+    var html = '<div class="nutritionField dynamic" data-id=' + id + '>' + '<div class="label editable" title="Click to edit">' + '<label>Add Label' + id + ' Here</label>' + '</div>' + '<input type="hidden" value="Add Label' + id + ' Here" class="extraVitaminLabel" name="extra_vitamin_label[]">' + '<input type="text" value="" name="extra_vitamin[]">' + '<input type="text" value="" name="extra_vitamin_percent[]" placeholder="Percentage">' + '<a class="remove" href="#" title="Remove this label"></a>' + '<div class="clear"></div>' + '</div>';
     $('.nutritionField:last').after(html);
   });
   /**

@@ -522,7 +522,7 @@ function nutr_label_generate( $id, $width = 22 )
 			if (!empty($sufficient)) {
 				foreach ($sufficient as $extraLabel => $extraVit) {
 					$rtn .= "	<div class='item_row cf'>\n";
-					$rtn .= "		<span class='f-left'>" . $extraLabel .  " " . $extraVit .  "g</span>\n";
+					$rtn .= "		<span class='f-left'>" . $extraLabel .  " " . $extraVit .  " mg</span>\n";
 					$rtn .= "		<span class='f-right'>" . $extraVitaminsPercent[$extraLabel] .  "%</span>\n";
 					$rtn .= "	</div>\n";
 				}

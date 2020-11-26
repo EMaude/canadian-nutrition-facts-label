@@ -4,7 +4,7 @@ Plugin Name:	Canadian Nutrition Facts Label
 Plugin URI: 	https://github.com/EMaude/canadian-nutrition-facts-label
 Description:	Create CANADIAN BILINGUAL Nutrition Facts Labels with user generated vitamins Use a shortcode [nutrition-label id=XXX] to add the label to any page or post.
 Version: 		3.0
-Author: 		Elliot Maude
+Author: 		Elliot Maude, dandelionweb
 Author URI:		http://elliotmaude.com/
 
 This program is free software; you can redistribute it and/or modify
@@ -47,6 +47,10 @@ $rda = array(
 		'potassium'			=> 4700,
 		'calcium' 			=> 1300,
 		'iron' 				=> 18,
+		
+		'vitamin_a'			=> 900,
+		'vitamin_c'			=> 60,
+
 		);
 
 
@@ -67,6 +71,8 @@ $nutrional_fields = array(
 					'potassium'		=> __('Potassium'),
 					'calcium'		=> __('Calcium'),
 					'iron'		    => __('Iron'),
+					'vitamin_a'		=> __('Vitamin A'),
+					'vitamin_c'		=> __('Vitamin C'),
 );
 
 
@@ -477,7 +483,7 @@ function nutr_label_generate( $id, $width = 22 )
 
 	if ($potassium || ($potassium === "0")) {
 		$rtn .= "	<div class='item_row cf'>\n";
-		$rtn .= "		<span class='f-left'>" . __("Potassium")." " . $potassium . "g</span>\n";
+		$rtn .= "		<span class='f-left'>" . __("Potassium")." " . $potassium . "mg</span>\n";
 		$rtn .= "		<span class='f-right'>" . nutr_percentage($potassium, $rda['potassium']) .  "%</span>\n";
 		$rtn .= "	</div>\n";
 	} else {
@@ -487,7 +493,7 @@ function nutr_label_generate( $id, $width = 22 )
 
 	if ($calcium || ($calcium === "0")) {
 		$rtn .= "	<div class='item_row cf'>\n";
-		$rtn .= "		<span class='f-left'>" . __("Calcium")." " . $calcium . "g</span>\n";
+		$rtn .= "		<span class='f-left'>" . __("Calcium")." " . $calcium . "mg</span>\n";
 		$rtn .= "		<span class='f-right'>" . nutr_percentage($calcium, $rda['calcium']) .  "%</span>\n";
 		$rtn .= "	</div>\n";
 	} else {
@@ -497,12 +503,31 @@ function nutr_label_generate( $id, $width = 22 )
 
 	if ($iron || ($iron === "0")) {
 		$rtn .= "	<div class='item_row cf'>\n";
-		$rtn .= "		<span class='f-left'>" . __("Iron / Fer")." " . $iron . "g</span>\n";
+		$rtn .= "		<span class='f-left'>" . __("Iron / Fer")." " . $iron . "mg</span>\n";
 		$rtn .= "		<span class='f-right'>" . nutr_percentage($iron, $rda['iron']) .  "%</span>\n";
 		$rtn .= "	</div>\n";
 	} else {
 		$insufficient[] = 'iron';
 	}
+
+	if ($vitamin_a || ($vitamin_a === "0")) {
+		$rtn .= "	<div class='item_row cf'>\n";
+		$rtn .= "		<span class='f-left'>" . __("Vitamin A")." " . $vitamin_a . "ug</span>\n";
+		$rtn .= "		<span class='f-right'>" . nutr_percentage($vitamin_a, $rda['vitamin_a']) .  "%</span>\n";
+		$rtn .= "	</div>\n";
+	} else {
+		$insufficient[] = 'Vitamin A';
+	}
+
+	if ($vitamin_c || ($vitamin_c === "0")) {
+		$rtn .= "	<div class='item_row cf'>\n";
+		$rtn .= "		<span class='f-left'>" . __("Vitamin C")." " . $vitamin_c . "mg</span>\n";
+		$rtn .= "		<span class='f-right'>" . nutr_percentage($vitamin_c, $rda['vitamin_c']) .  "%</span>\n";
+		$rtn .= "	</div>\n";
+	} else {
+		$insufficient[] = 'Vitamin C';
+	}
+
 
 
 	/*

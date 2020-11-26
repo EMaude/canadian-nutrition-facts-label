@@ -4,7 +4,7 @@ Plugin Name:	Canadian Nutrition Facts Label
 Plugin URI: 	https://github.com/EMaude/canadian-nutrition-facts-label
 Description:	Create CANADIAN BILINGUAL Nutrition Facts Labels with user generated vitamins Use a shortcode [nutrition-label id=XXX] to add the label to any page or post.
 Version: 		3.0
-Author: 		Elliot Maude, dandelionweb
+Author: 		Elliot Maude
 Author URI:		http://elliotmaude.com/
 
 This program is free software; you can redistribute it and/or modify

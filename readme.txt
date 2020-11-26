@@ -1,5 +1,5 @@
 ﻿=== Canadian Nutrition Facts Label ===
-Contributors: emaude, dandelionweb
+Contributors: emaude
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JEMTB4U8SYFL6
 Tags: food, nutrition, nutrition facts, nutrition label, nutrition labelling, Canadian, bilingual, nutrition facts table
 Requires at least: 3.0
